@@ -35,3 +35,31 @@ Orders R/W · Payments R/W · Customers R · Merchant R
 
 Cette application fait partie de la suite TAKATAK sur Clover : toutes les apps partagent le même dos d'événements (webhooks Clover), le même **client unique reconnu par son numéro de téléphone** (+ courriel), et les mêmes commandes et paiements Clover. Aucune app ne vit en silo : les données qu'elle produit alimentent les autres apps de la suite (voir « Clover API — Main Stuff — Robot Notepad », section 3, déposé au Drive Opérations et dans `~/workspace/clover-apps/`).
 
+
+## État du code (2026-10-28)
+
+Application Next.js 16 qui fonctionne (tests verts, build OK). Mise en ligne : `DEPLOY.md` § 5.
+
+**Ce qui marche :**
+- **Commun (kit Suite TAKATAK, identique dans les 9 apps)** : connexion Clover OAuth v2 (jetons scellés, rafraîchis
+  seuls, supprimés à la désinstallation) · webhook Clover (vérification, X-Clover-Auth, chaque événement une fois) ·
+  base PostgreSQL (ou mémoire en dev) · session marchand · paliers Base / Premium / VIP lus depuis la facturation
+  Clover (`OWN_MERCHANTS` = VIP) · marchand `RNVTBYMCKXEJ1` en lecture seule · lien Suite TAKATAK avec Food Hub ·
+  page d'accueil FR/EN, tableau de bord `/app`, pages légales `/legal/*`, `/api/health`, `/api/cron`, clés d'appareils.
+- **Tableau de bord premium (2026-10-29, kit commun)** : menu latéral avec sous-menus (les écrans de cette app,
+  Suite TAKATAK, Mon compte, Aide) · Mon compte → Profil, Forfait et facturation, Actions autorisées, Appareils,
+  Paiements et dépôts, Sécurité et données (export JSON), Journal d'activité · rôle Clover de la personne (propriétaire,
+  administrateur, gérant, employé) vérifié par le serveur pour chaque action sensible, et noté au journal · sélecteur
+  des 9 apps de la suite (annuaire Food Hub) · version mobile. Comment tout s'emboîte : `docs/SUITE_KIT.md`.
+- Livraison rattachée à une commande Clover / Food Hub, avec deux liens privés : livreur `/c/<jeton>` (ramassée,
+  livrée, position partagée toutes les 20 s) et client `/t/<jeton>` (étapes, position pendant la route, carte)
+- Avis après livraison : 4–5 étoiles → page Google du marchand, 1–3 → gardé en privé (Premium)
+- Livraisons directes de Food Hub créées automatiquement ; positions effacées à la livraison, liens expirés 48 h après
+
+**Ce qui reste :**
+- Pourboire en ligne après livraison (lien Ecommerce Clover) et paiement à la porte (VIP) : demandent les clés
+  Ecommerce Clover du marchand.
+- Notifications client via CH4T : CH4T n'envoie rien tant que l'exception n'est pas accordée.
+
+**Développer :** `npm install` · `npm run dev` · `npm run typecheck` · `npm test` · `npm run build`. Règles pour
+les agents : `AGENTS.md` ; journal : `WORKLOG.md`.
