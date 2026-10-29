@@ -6,7 +6,7 @@ export const dynamic = 'force-dynamic';
 
 // { googleReviewUrl } — where 4–5 star customers are sent after delivery (Premium: tip + review page).
 export async function PUT(req: Request) {
-  const c = await requireMerchant(req, 'premium');
+  const c = await requireMerchant(req, 'premium', { action: 'deliveries.settings' });
   if (!isCtx(c)) return c;
   const b = await readJson(req);
   if (!b) return fail('JSON body required');

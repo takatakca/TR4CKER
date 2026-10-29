@@ -9,7 +9,7 @@
     "P",
     "A"
   ],
-  "permissions": "Orders R/W · Payments R/W · Customers R · Merchant R",
+  "permissions": "Orders R/W · Payments R/W · Customers R · Merchant R · Employees R (rôles des personnes, Compte → Actions autorisées)",
   "tiers": [
     {
       "name": "Base",

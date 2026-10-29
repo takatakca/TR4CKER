@@ -46,6 +46,11 @@ Application Next.js 16 qui fonctionne (tests verts, build OK). Mise en ligne : `
   base PostgreSQL (ou mémoire en dev) · session marchand · paliers Base / Premium / VIP lus depuis la facturation
   Clover (`OWN_MERCHANTS` = VIP) · marchand `RNVTBYMCKXEJ1` en lecture seule · lien Suite TAKATAK avec Food Hub ·
   page d'accueil FR/EN, tableau de bord `/app`, pages légales `/legal/*`, `/api/health`, `/api/cron`, clés d'appareils.
+- **Tableau de bord premium (2026-10-29, kit commun)** : menu latéral avec sous-menus (les écrans de cette app,
+  Suite TAKATAK, Mon compte, Aide) · Mon compte → Profil, Forfait et facturation, Actions autorisées, Appareils,
+  Paiements et dépôts, Sécurité et données (export JSON), Journal d'activité · rôle Clover de la personne (propriétaire,
+  administrateur, gérant, employé) vérifié par le serveur pour chaque action sensible, et noté au journal · sélecteur
+  des 9 apps de la suite (annuaire Food Hub) · version mobile. Comment tout s'emboîte : `docs/SUITE_KIT.md`.
 - Livraison rattachée à une commande Clover / Food Hub, avec deux liens privés : livreur `/c/<jeton>` (ramassée,
   livrée, position partagée toutes les 20 s) et client `/t/<jeton>` (étapes, position pendant la route, carte)
 - Avis après livraison : 4–5 étoiles → page Google du marchand, 1–3 → gardé en privé (Premium)
