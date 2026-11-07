@@ -1,3 +1,4 @@
+- 2026-11-07 | Codex — ChatGPT Work | fix/clover-merchant-identity → PR #3 | done (source review/checks) | Existing identity guard preserved; frozen npm install, Node22 typecheck, 53 tests in 3 files and production build passed; four shared files match all nine reviewed sources | authorized sequential merge; issue #2 retains hosting/provider acceptance; no live Clover/payment action
 - 2026-11-04 | Codex shared-kit continuation @ cloud | fix/clover-merchant-identity → review branch | source/checks done | authoritative Clover merchant-id match required before billing or credential writes; unavailable/malformed/mismatched response preserves installed records; 21 shared regressions, typecheck + 53 tests + normal production build pass; four shared path SHA256 values match all nine review sources; existing app workflow preserved | next: owner review/PR and real authorized Clover acceptance; no production deployment — signé : Codex @ Codex cloud · 2026-11-04
 # Work log
 
